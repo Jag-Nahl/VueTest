@@ -80,16 +80,34 @@
         </a>
       </li>
     </ul>
+    <span></span>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      text: [],
     }
+  },
+  methods: {
+    Get: function() {
+ axios({
+  method:'get',
+  url:'https://jags-app.azurewebsites.net/api/values',
+})
+  .then(function(response) {
+  console.log(response.data);
+});
+    }
+  },
+  mounted: function (){
+    this.Get();
   }
 }
 </script>
