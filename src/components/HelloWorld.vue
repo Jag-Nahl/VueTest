@@ -106,7 +106,7 @@ export default {
   methods: {
     Get: function() {
       var credentials = {
-        userName: "jag1@infojam.co.uk",
+        userName: "jag@infojam.co.uk",
         password: "Password1!"
       };
       $.ajax({
