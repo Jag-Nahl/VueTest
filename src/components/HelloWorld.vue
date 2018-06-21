@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2><router-link to="/profile">GO TO MY PROFILE</router-link></h2>
     <h2>Essential Links</h2>
     <h3></h3>
     <ul>

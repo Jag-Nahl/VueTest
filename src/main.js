@@ -17,7 +17,7 @@ const Home = { template: App }
 const LoginPage = { template: LoginPage }
 
 const routes = [
-  { path: '/home', component: App },
+  { path: '/', component: App },
   { path: '/login', component: Login },
   { path: '/profile', component: Profile }
 
@@ -29,19 +29,3 @@ const router = new VueRouter({
 const app = new Vue({
   router
 }).$mount('#app2')
-
-$.ajaxSetup({
-  beforeSend: function(xhr) {
-      xhr.setRequestHeader('Authorization', getToken());
-  }
-});
-
-function getToken() {
-  var x = localStorage.getItem('token');
-  if(x == null || x == "") {
-    return "Bearer ";
-  }
-  else {
-    return "Bearer " + x;
-  }
-}
