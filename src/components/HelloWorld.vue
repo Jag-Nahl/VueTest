@@ -2,6 +2,7 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <h3></h3>
     <ul>
       <li>
         <a
@@ -80,12 +81,7 @@
         </a>
       </li>
           <li>
-        <button
-          v-on:click="Get()"
-          target="_blank"
-        >
-          login
-        </button>
+         <router-link to="/Login">Go to Login</router-link>
       </li>
     </ul>
     <span></span>
@@ -93,14 +89,18 @@
 </template>
 
 <script>
-import axios from "axios";
+import Axios from 'axios'
 
 export default {
   name: "HelloWorld",
   data() {
     return {
       msg: "Welcome to Your Vue.js App",
-      text: []
+      text: [],
+      auth: {
+        isLoggedIn: false,
+        credentials: {}
+      }
     };
   },
   methods: {
@@ -126,10 +126,7 @@ export default {
     }
   },
   mounted: function() {
-    var self = this;
-    setTimeout(function() {
-      self.Get();
-    }, 2000);
+ 
   }
 };
 </script>

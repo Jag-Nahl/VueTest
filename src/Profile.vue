@@ -1,23 +1,23 @@
 <template>
-  <div id="Login">
-    <Login/>
+  <div id="Profile">
+    <ProfileDetails/>
   </div>
 </template>
 
 <script>
-import Login from './components/Login'
+import ProfileDetails from './components/ProfileDetails'
 import Axios from 'axios'
 
 export default {
-  name: 'LoginPage',
+  name: 'ProfilePage',
   components: {
-    Login
+    ProfileDetails
   }
 }
 </script>
 
 <style>
-#Login {
+#Profile {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

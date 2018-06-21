@@ -4,16 +4,16 @@
    <hr>
     <input type="email" placeholder="Username" v-model="username"/>
         <input type="password" v-model="password" />
-<button v-on:click="Submit()" />
+<button v-on:click="Submit()">Login Here</button>
     
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import Axios from 'axios'
 
 export default {
-  name: "Login",
+  name: "LoginInput",
   data() {
     return {
       username: '',
@@ -22,12 +22,35 @@ export default {
   },
   methods: {
     Submit: function() {
+      var self = this;
       console.log(this.username + this.password);
+      var credentials = {
+              userName: this.username,
+        password: this.password
+      };
+      $.ajax({
+    type: "POST",
+    url: "https://jags-app.azurewebsites.net/api/auth/login",
+    // The key needs to match your method's input parameter (case-sensitive).
+    data: JSON.stringify(credentials),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+      console.log(data);
+      console.log("SUCCESS");
+      localStorage.setItem('token', data.auth_token);
+      localStorage.setItem('id', data.id);
+
+      self.$router.push('/profile')
+
+      },
+    error: function() {
+    console.log("FAIL");
+
+    }
+});
     }
   },
-  mounted: function() {
-  
-  }
 };
 </script>
 

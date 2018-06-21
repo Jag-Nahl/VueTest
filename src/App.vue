@@ -7,6 +7,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import Axios from 'axios'
 
 export default {
   name: 'App',
