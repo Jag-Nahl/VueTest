@@ -111,7 +111,7 @@ export default {
       };
       $.ajax({
     type: "POST",
-    url: "http://localhost:5000/api/auth/login",
+    url: "https://jags-app.azurewebsites.net/api/auth/login",
     // The key needs to match your method's input parameter (case-sensitive).
     data: JSON.stringify(credentials),
     contentType: "application/json; charset=utf-8",
