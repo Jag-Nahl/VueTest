@@ -79,42 +79,65 @@
           awesome-vue
         </a>
       </li>
+          <li>
+        <button
+          v-on:click="Get()"
+          target="_blank"
+        >
+          login
+        </button>
+      </li>
     </ul>
     <span></span>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      text: [],
-    }
+      msg: "Welcome to Your Vue.js App",
+      text: []
+    };
   },
   methods: {
     Get: function() {
- axios({
-  method:'get',
-  url:'https://jags-app.azurewebsites.net/api/values',
-})
-  .then(function(response) {
-  console.log(response.data);
+      var credentials = {
+        userName: "jag1@infojam.co.uk",
+        password: "Password1!"
+      };
+      $.ajax({
+    type: "POST",
+    url: "http://localhost:5000/api/auth/login",
+    // The key needs to match your method's input parameter (case-sensitive).
+    data: JSON.stringify(credentials),
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    success: function(data){
+      console.log(data);
+      },
+    failure: function(errMsg) {
+        com(errMsg);
+    }
 });
     }
   },
-  mounted: function (){
-    this.Get();
+  mounted: function() {
+    var self = this;
+    setTimeout(function() {
+      self.Get();
+    }, 2000);
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
